@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block title %}Quantum Hyperfield Console{% endblock %}
+{% block body %}
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-veil"></div>
+<div class="app-shell">
+  <aside class="sidebar glass">
+    <div class="brand">
+      <div class="brand-mark small">QH</div>
+      <div><strong>Hyperfield</strong><span>WEB {{ version }}</span></div>
+    </div>
+    <nav id="nav">
+      <button class="nav-item active" data-view="overview">◈ <span>Overview</span></button>
+      <button class="nav-item" data-view="cqse">◉ <span>CQSE Surface</span></button>
+      <button class="nav-item" data-view="hyperfield">⌁ <span>Temporal Field</span></button>
+      <button class="nav-item" data-view="memory">◇ <span>Vector Memory</span></button>
+      <button class="nav-item" data-view="analysis">✦ <span>AI Analysis</span></button>
+      <button class="nav-item" data-view="datasets">▦ <span>Datasets</span></button>
+      <button class="nav-item" data-view="actions">✓ <span>Approvals</span></button>
+      <button class="nav-item" data-view="security">⬡ <span>Security</span></button>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="status-dot"></div>
+      <div><span>operator</span><strong>{{ username }}</strong></div>
+      <form method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="icon-btn" title="Sign out">↪</button>
+      </form>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar glass">
+      <div>
+        <div class="eyebrow">DEFENSIVE CYBER STATE OBSERVATORY</div>
+        <h1 id="viewTitle">Observatory Overview</h1>
+      </div>
+      <div class="top-actions">
+        <div class="pill"><span id="clock">--:--:--</span> UTC</div>
+        <button class="ghost" id="refreshBtn">Refresh state</button>
+        <button class="primary" id="setupMemoryBtn">Initialize memory</button>
+      </div>
+    </header>
+
+    <section class="view active" id="view-overview">
+      <div class="metric-grid" id="metricGrid">
+        <article class="metric-card glass"><span>Ping</span><strong id="mPing">—</strong><small>ms</small><i id="zPing">z —</i></article>
+        <article class="metric-card glass"><span>Jitter</span><strong id="mJitter">—</strong><small>ms</small><i id="zJitter">z —</i></article>
+        <article class="metric-card glass"><span>Download</span><strong id="mDown">—</strong><small>Mbps</small><i id="zDown">z —</i></article>
+        <article class="metric-card glass"><span>Upload</span><strong id="mUp">—</strong><small>Mbps</small><i id="zUp">z —</i></article>
+        <article class="metric-card glass accent"><span>Q16 entropy</span><strong id="mQEntropy">—</strong><small>bits</small><i>telemetry circuit</i></article>
+        <article class="metric-card glass"><span>Samples</span><strong id="mSamples">—</strong><small>rows</small><i id="mAnomalies">— anomalies</i></article>
+      </div>
+
+      <div class="layout-2">
+        <article class="panel glass tall">
+          <div class="panel-head"><div><span class="eyebrow">NETWORK WORLDLINE</span><h2>Telemetry trajectory</h2></div><span class="badge">LIVE</span></div>
+          <canvas id="telemetryCanvas" height="320"></canvas>
+          <div class="legend"><span class="cyan">Ping</span><span class="purple">Jitter</span><span class="green">Download</span><span class="amber">Upload</span></div>
+        </article>
+        <article class="panel glass tall">
+          <div class="panel-head"><div><span class="eyebrow">STATE VECTOR</span><h2>PennyLane Q16</h2></div><span class="badge violet">4 QUBITS</span></div>
+          <canvas id="q16Canvas" height="320"></canvas>
+          <div class="state-readout" id="q16Readout">Awaiting telemetry…</div>
+        </article>
+      </div>
+
+      <div class="layout-3">
+        <article class="panel glass"><div class="panel-head"><h3>Anomaly field</h3></div><div id="anomalyList" class="list-stack"></div></article>
+        <article class="panel glass"><div class="panel-head"><h3>Memory fabric</h3></div><div id="memoryStatus" class="big-status">Checking…</div></article>
+        <article class="panel glass"><div class="panel-head"><h3>Security posture</h3></div><div id="securityMini" class="list-stack"></div></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-cqse">
+      <div class="model-ribbon glass">
+        <div><span>OpenAI 3072-D</span><strong id="modelOpenAI">checking</strong></div>
+        <div><span>Contriever 768-D</span><strong id="modelFB">checking</strong></div>
+        <div><span>Gemma 4 E2B</span><strong id="modelGemma">checking</strong></div>
+        <div><span>PennyLane</span><strong>Q16 + Q32 active</strong></div>
+        <button class="ghost" id="verifyModelsBtn">Verify model layer</button>
+        <button class="ghost" id="downloadGemmaBtn">Secure Gemma download</button>
+      </div>
+      <div class="hero-panel glass">
+        <div>
+          <span class="eyebrow">CHROMATIC QUANTUM SURFACE EMBEDDING</span>
+          <h2>Colorspace Vector Workbench</h2>
+          <p>Semantic text → RGB → XYZ → OKLab → OKLCH → 96-D chromatic manifold → 5-qubit 32-state probability surface.</p>
+        </div>
+        <div class="probe-row">
+          <input id="cqseProbe" placeholder="Optional semantic probe: e.g. periodic DNS fanout with rising jitter">
+          <label class="switch-label"><input id="cqseStore" type="checkbox" checked> store surface</label>
+          <button class="primary" id="buildCqseBtn">Generate CQSE</button>
+        </div>
+      </div>
+      <div class="palette" id="palette"></div>
+      <div class="layout-2">
+        <article class="panel glass"><div class="panel-head"><h3>CQSE-96 chromatic matrix</h3><span class="badge">96D</span></div><canvas id="cq96Canvas" height="380"></canvas></article>
+        <article class="panel glass"><div class="panel-head"><h3>Quantum chromatic distribution</h3><span class="badge violet">32 STATES</span></div><canvas id="q32Canvas" height="380"></canvas></article>
+      </div>
+      <div class="layout-2">
+        <article class="panel glass"><div class="panel-head"><h3>OKLab manifold</h3></div><canvas id="labCanvas" height="330"></canvas></article>
+        <article class="panel glass code-panel"><div class="panel-head"><h3>Surface coordinates</h3></div><pre id="cqseRaw">Generate a surface to inspect coordinates.</pre></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-hyperfield">
+      <div class="hero-panel glass">
+        <div><span class="eyebrow">TCQH TEMPORAL FIELD</span><h2>Replayable cyber worldline</h2><p>Regime attractors, boundary energy, OKLab motion, curvature and quantum Jensen-Shannon divergence.</p></div>
+        <div class="probe-row"><button class="primary" id="buildHyperfieldBtn">Build temporal field</button><button class="ghost" id="playWorldlineBtn">▶ Replay</button></div>
+      </div>
+      <div class="metric-grid compact">
+        <article class="metric-card glass"><span>Points</span><strong id="hPoints">—</strong></article>
+        <article class="metric-card glass"><span>Regimes</span><strong id="hRegimes">—</strong></article>
+        <article class="metric-card glass"><span>Boundaries</span><strong id="hBoundaries">—</strong></article>
+        <article class="metric-card glass"><span>Mean Q-JS</span><strong id="hQjs">—</strong></article>
+      </div>
+      <article class="panel glass worldline-panel"><div class="panel-head"><h3>4D projection · OKLab + time</h3><span class="badge">REPLAY</span></div><canvas id="worldlineCanvas" height="520"></canvas><input id="worldlineSlider" class="timeline" type="range" min="0" max="1" value="0"></article>
+      <div class="layout-2">
+        <article class="panel glass"><div class="panel-head"><h3>Regime attractors</h3></div><div class="table-wrap"><table><thead><tr><th>R</th><th>Samples</th><th>Ping</th><th>Jitter</th><th>Download</th><th>Q entropy</th></tr></thead><tbody id="regimeBody"></tbody></table></div></article>
+        <article class="panel glass"><div class="panel-head"><h3>Transition boundaries</h3></div><div id="boundaryList" class="list-stack scroll"></div></article>
+      </div>
+    </section>
+
+    <section class="view" id="view-memory">
+      <div class="hero-panel glass"><div><span class="eyebrow">WEAVIATE FABRIC</span><h2>Multi-surface vector memory</h2><p>BM25 + OpenAI semantic vectors + CQSE-96 + CQSE-Q32, fused through reciprocal-rank scoring.</p></div><div class="probe-row"><input id="memoryQuery" placeholder="Search incidents, regimes, telemetry and dataset memories"><button class="primary" id="memorySearchBtn">Search fabric</button></div></div>
+      <div id="memoryResults" class="result-grid"></div>
+    </section>
+
+
+    <section class="view" id="view-analysis">
+      <div class="hero-panel glass">
+        <div>
+          <span class="eyebrow">STRUCTURED DEFENSIVE REASONING</span>
+          <h2>AI Analysis Chamber</h2>
+          <p>The web service sends only computed telemetry/CQSE/hyperfield context to the configured Responses model. Model output remains advisory and action blocks require human review.</p>
+        </div>
+        <div class="probe-row">
+          <select id="analysisMode">
+            <option>Deep Network Analysis</option>
+            <option>Predictive Risk</option>
+            <option>Adaptive Circuit Audit</option>
+            <option>Memory Correlation</option>
+            <option>Temporal Hyperfield Analysis</option>
+            <option>Incident Commander</option>
+          </select>
+          <button class="primary" id="runAnalysisBtn">Run structured analysis</button>
+        </div>
+      </div>
+      <div class="analysis-layout">
+        <article class="panel glass analysis-main">
+          <div class="panel-head"><div><span class="eyebrow">MODEL RESPONSE</span><h3 id="analysisModel">No model run yet</h3></div><span class="badge violet" id="analysisUsage">—</span></div>
+          <pre id="analysisText" class="analysis-text">Configure OPENAI_API_KEY and QNH_REASONING_MODEL to enable this surface.</pre>
+        </article>
+        <article class="panel glass">
+          <div class="panel-head"><h3>Protocol legend</h3></div>
+          <div class="protocol-grid">
+            <div><b>[status]</b><span>Current state</span></div>
+            <div><b>[observation]</b><span>Measured facts</span></div>
+            <div><b>[evidence]</b><span>Supporting signals</span></div>
+            <div><b>[risk]</b><span>Limits / uncertainty</span></div>
+            <div><b>[action]</b><span>Approval-gated proposal</span></div>
+            <div><b>[replytemplate]</b><span>Operator communication</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="view-datasets">
+      <div class="hero-panel glass"><div><span class="eyebrow">SAFE CYBER CORPORA</span><h2>Dataset simulation and memory ingestion</h2><p>Simulation-first. No pickle, notebook or executable deserialization path exists in the web service.</p></div></div>
+      <div class="dataset-grid">
+        {% for d in datasets %}
+        <article class="dataset-card glass">
+          <span class="badge">{{ d[2] }}</span>
+          <h3>{{ d[1] }}</h3>
+          <code>{{ d[0] }}</code>
+          <div class="dataset-actions"><input type="number" value="180" min="1" max="1000"><button class="ghost datasetSimBtn" data-dataset="{{ d[0] }}">Simulate → Weaviate</button></div>
+          <div class="dataset-result"></div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="view" id="view-actions">
+      <div class="hero-panel glass">
+        <div><span class="eyebrow">HUMAN-IN-THE-LOOP</span><h2>Action approval center</h2><p>Generated or manually proposed defensive actions remain inert until explicitly reviewed.</p></div>
+        <div class="probe-row"><input id="actionTitle" placeholder="Action title"><input id="actionDescription" placeholder="Defensive action description"><button class="primary" id="createActionBtn">Queue action</button></div>
+      </div>
+      <div class="table-wrap panel glass"><table><thead><tr><th>Priority</th><th>Risk</th><th>State</th><th>Title</th><th>Description</th><th>Review</th></tr></thead><tbody id="actionsBody"></tbody></table></div>
+    </section>
+
+    <section class="view" id="view-security">
+      <div class="hero-panel glass"><div><span class="eyebrow">CONTAINER + APPLICATION HARDENING</span><h2>Security and runtime posture</h2><p>Designed for non-root, read-only container execution with dropped capabilities and secret-file support.</p></div><button class="primary" id="refreshSystemBtn">Refresh posture</button></div>
+      <div class="layout-2">
+        <article class="panel glass"><div class="panel-head"><h3>Runtime state</h3></div><div id="systemCards" class="security-grid"></div></article>
+        <article class="panel glass code-panel"><div class="panel-head"><h3>Raw posture</h3></div><pre id="systemRaw">Loading…</pre></article>
+      </div>
+      <article class="panel glass"><div class="panel-head"><h3>Defense layers</h3></div>
+        <div class="security-grid">
+          <div><strong>Container</strong><span>non-root UID · read-only rootfs · tmpfs /tmp · cap_drop ALL · no-new-privileges</span></div>
+          <div><strong>HTTP</strong><span>CSRF · same-site sessions · CSP · frame denial · no-sniff · body limits · login/API throttles</span></div>
+          <div><strong>Secrets</strong><span>environment or *_FILE secret providers · no credentials compiled into image</span></div>
+          <div><strong>Actions</strong><span>approval state machine; no arbitrary command execution API</span></div>
+          <div><strong>Datasets</strong><span>simulation-only web path; no object deserialization</span></div>
+          <div><strong>Audit</strong><span>hash-linked SQLite audit events for security-sensitive operations</span></div>
+        </div>
+      </article>
+    </section>
+
+    <div id="toast" class="toast"></div>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='app.js') }}" defer></script>
+{% endblock %}

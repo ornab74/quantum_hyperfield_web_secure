@@ -1,0 +1,106 @@
+{
+  ".dockerignore": {
+    "sha256": "fe004394327eeb0f29d42b6ddd59c4d136b20b7b4f295ec86d527c7300fce035",
+    "bytes": 177
+  },
+  ".env.example": {
+    "sha256": "a3d8bbec0c7177ccec7c702ee0446ceaebc6087cfc1ea81593d4ba4389a258b4",
+    "bytes": 1345
+  },
+  "DEPENDENCY_LOCK.md": {
+    "sha256": "397c03f33aa1873ac358a91baa4b3e5359cb3357ba109b1bc9713977356b6858",
+    "bytes": 1740
+  },
+  "Dockerfile": {
+    "sha256": "0c9f6e2880c5367522a4305e1c00f427d51fae2653cabdfb0488f9ff1b7277d0",
+    "bytes": 1954
+  },
+  "Dockerfile.ml": {
+    "sha256": "862fcb75295beb5e5d15577445cdb92fa3a72a2b1a7a358759dec10b0e396c98",
+    "bytes": 1846
+  },
+  "Makefile": {
+    "sha256": "36b2e3270eec5ed4adf8a92db06b0343054a8bce3c91960d5b94d26c671eb664",
+    "bytes": 255
+  },
+  "README.md": {
+    "sha256": "7be7f7652015be2bfc12f547430dd4b79d86a383db4f82524d12962a21ab0ca8",
+    "bytes": 7736
+  },
+  "SECURITY.md": {
+    "sha256": "9ff1acc646d054ab2d6b88a9ea02af8bfc7e13319d10c46e9b24a09ba6c86e75",
+    "bytes": 1185
+  },
+  "compose.yaml": {
+    "sha256": "31b804817aaee3c3372b66e8c9f8ad5845064a7983ffde7ee50fdb72c1ed219b",
+    "bytes": 2420
+  },
+  "core.py": {
+    "sha256": "ce87e07ff5a1ac0f6aeb8cdf47192730253940ca2ef67b98b4ce99ead39b1407",
+    "bytes": 42011
+  },
+  "deploy/nginx.conf.example": {
+    "sha256": "f177a5fe42ed0a6c8c920e3b4b3021562e5aad2a3d308a5306600f4a4e13e9da",
+    "bytes": 870
+  },
+  "main.py": {
+    "sha256": "dfc5ff53618907856a4a2f9756c65d85f8ba327b5eb76a730f73d53b67874d2c",
+    "bytes": 19093
+  },
+  "network_schema.sql": {
+    "sha256": "65859b19317903d4548f8da2ddbe7295d6bb2b15ed7312da97bc74288fd31298",
+    "bytes": 826
+  },
+  "qnhctl.py": {
+    "sha256": "9a265b4726e51f1f5976f89ce066ced1d3c749c15b8b4bb77ec1612b6315c0c5",
+    "bytes": 1656
+  },
+  "requirements-datasets.lock.txt": {
+    "sha256": "8ef2331ff615d0b468931fae916c86a6c2b9a6553af1989c4869599803db3cad",
+    "bytes": 50
+  },
+  "requirements-datasets.txt": {
+    "sha256": "8ef2331ff615d0b468931fae916c86a6c2b9a6553af1989c4869599803db3cad",
+    "bytes": 50
+  },
+  "requirements-ml.lock.txt": {
+    "sha256": "94f18f631da82e13c2c0c1a3644d327c3763a4f793f39893dc11b14b8e3e4176",
+    "bytes": 74
+  },
+  "requirements-ml.txt": {
+    "sha256": "94f18f631da82e13c2c0c1a3644d327c3763a4f793f39893dc11b14b8e3e4176",
+    "bytes": 74
+  },
+  "requirements.lock.txt": {
+    "sha256": "9f28f40897b7e99cc2780163c95c766bae96bf9f05fd957bf9f61b9a160b97d3",
+    "bytes": 241
+  },
+  "requirements.txt": {
+    "sha256": "9f28f40897b7e99cc2780163c95c766bae96bf9f05fd957bf9f61b9a160b97d3",
+    "bytes": 241
+  },
+  "secrets/README.md": {
+    "sha256": "6d390efa2553e02f042fbfc2e41f434a923dc6369f47bdc21c4935dc6b25db0e",
+    "bytes": 479
+  },
+  "static/app.css": {
+    "sha256": "7c8a49d785c53fa1f217fdb189d229977dc1f4992e79ba12331d733bbb2d24eb",
+    "bytes": 11922
+  },
+  "static/app.js": {
+    "sha256": "ef25814189188b312e36f5ec990bf3c32f944400d4ad090cee476a6bde827293",
+    "bytes": 14583
+  },
+  "templates/base.html": {
+    "sha256": "f7d79e0ca94748a0124cccaea9d281e13c3f698a96cd25c1b986e733614a571f",
+    "bytes": 486
+  },
+  "templates/index.html": {
+    "sha256": "5af0ded4157abacd08b744a40cefe5887b3faf699e2c4f82ba34bb11053e1aff",
+    "bytes": 14257
+  },
+  "templates/login.html": {
+    "sha256": "f19d0247b6a0d47d4621420e2d8b2592a6ccc73361dfa866d2efbe75f2a9d20e",
+    "bytes": 1202
+  }
+}

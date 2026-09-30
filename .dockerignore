@@ -1,0 +1,16 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite*
+*.log
+data/
+models/
+secrets/*
+!secrets/README.md
+roadscanner*
+quantum_network_hyperconsole_v8.py

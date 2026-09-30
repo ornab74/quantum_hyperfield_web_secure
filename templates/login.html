@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Quantum Hyperfield{% endblock %}
+{% block body_class %}login-body{% endblock %}
+{% block body %}
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<main class="login-shell">
+  <section class="login-card glass">
+    <div class="brand-mark">QH</div>
+    <div class="eyebrow">SECURE OPERATOR ACCESS</div>
+    <h1>Quantum Hyperfield</h1>
+    <p class="subtle">CQSE · PennyLane · Temporal Worldlines · Weaviate Memory</p>
+    {% if error %}<div class="notice danger">{{ error }}</div>{% endif %}
+    <form method="post" autocomplete="off">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <label>Operator
+        <input name="username" maxlength="80" required autocomplete="username">
+      </label>
+      <label>Password
+        <input name="password" type="password" maxlength="256" required autocomplete="current-password">
+      </label>
+      <button class="primary wide" type="submit">Enter secure console</button>
+    </form>
+    <div class="login-foot">
+      <span>CSRF protected</span><span>Strict cookies</span><span>No CDN runtime</span>
+    </div>
+  </section>
+</main>
+{% endblock %}
